@@ -9,6 +9,14 @@ alias gpl='git pull'
 alias gb='git branch'
 alias gco='git checkout'
 alias gsw='git switch'
+alias gsta='git stash'
+alias gstal='git stash list'
+alias gstap='git stash pop'
+alias gcl='git clone'
+alias gf='git fetch --all --prune'
+alias grb='git rebase -i'
+alias greset='git reset --soft HEAD~1'
+alias gundo='git reset HEAD~1'
 
 # ===== Kubectl =====
 alias k='kubectl'
@@ -18,6 +26,8 @@ alias kgs='kubectl get svc'
 alias kl='kubectl logs -f'
 alias ke='kubectl exec -it'
 alias kn='kubectl config set-context --current --namespace'
+alias kctx='kubectl config use-context'
+alias kgpaw='kubectl get pods --all-namespaces'
 
 # ===== Docker =====
 alias dps='docker ps'
@@ -28,6 +38,9 @@ alias drmi='docker rmi'
 alias dexec='docker exec -it'
 alias dlog='docker logs -f'
 alias dc='docker compose'
+alias dcup='docker compose up -d'
+alias dcdn='docker compose down'
+alias dclog='docker compose logs -f'
 
 # ===== Navigation =====
 alias ..='cd ..'
@@ -40,6 +53,10 @@ alias lt='ls --tree 2>/dev/null || find . -maxdepth 3 -print | sed -e "s;[^/]*/;
 # ===== Network =====
 alias myip='curl -s ifconfig.me'
 alias ports='lsof -i -P -n | grep LISTEN'
+alias ping='ping -c 4'
+alias cping='ping -c 100'
+alias dns='dig +short'
+alias trace='traceroute'
 
 # ===== Process =====
 alias psu='ps aux | grep -i'
@@ -49,6 +66,7 @@ alias psg='ps aux | head -1; ps aux | grep -i'
 alias df='df -h'
 alias du='du -sh'
 alias dud='du -d 1 -h | sort -hr'
+alias mem='free -h'
 
 # ===== Quick Ops =====
 alias mkd='mkdir -p'
@@ -56,6 +74,37 @@ alias tree='tree -L 3 -I "node_modules|.git|dist|__pycache__|.venv"'
 alias t='tree'
 alias path='echo $PATH | tr ":" "\n"'
 alias reload='source ~/.zshrc 2>/dev/null || source ~/.bashrc 2>/dev/null'
+alias cls='clear'
+alias now='date "+%Y-%m-%d %H:%M:%S"'
+alias week='date "+%Y-W%V"'
+
+# ===== History =====
+alias h='history'
+alias hs='history | grep -i'
+alias htop='history | tail -20'
+
+# ===== Python =====
+alias py='python3'
+alias pip='pip3'
+alias venv='python3 -m venv .venv'
+alias vact='source .venv/bin/activate'
+
+# ===== NPM / Node =====
+alias ni='npm install'
+alias nid='npm install --save-dev'
+alias nig='npm install -g'
+alias ns='npm start'
+alias nb='npm run build'
+alias nt='npm test'
+alias nr='npm run'
+alias nl='npm ls --depth=0'
+
+# ===== Systemd =====
+alias ss='systemctl status'
+alias ssr='systemctl restart'
+alias sse='systemctl enable --now'
+alias ssd='systemctl disable --now'
+alias slogs='journalctl -u'
 
 # ===== Safety =====
 alias rm='rm -i'
