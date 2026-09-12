@@ -1,25 +1,27 @@
 # dotfiles
 
-这个仓库用于记录常用配置文件。目前主要提供 `.alias`，其中包含 Git、Kubectl、Docker、目录跳转、网络、进程、磁盘、Python、NPM/Node、Systemd 等常用命令别名。
+**English** | [简体中文](README.zh-CN.md)
 
-## 推荐安装方式
+This repository keeps commonly used configuration files. For now it mainly provides `.alias`, which contains command aliases for Git, Kubectl, Docker, directory jumping, networking, processes, disks, Python, NPM/Node, Systemd, and more.
 
-推荐把仓库里的 `.alias` 放到用户家目录，并在当前 Shell 的启动配置文件里加载它。
+## Recommended Installation
 
-在本仓库目录下直接运行：
+The recommended approach is to put the repository's `.alias` in your home directory and load it from your current shell's startup config file.
+
+Run directly in the repository directory:
 
 ```sh
 ./install.sh
 ```
 
-脚本会完成这些步骤：
+The script performs these steps:
 
-- 复制 `.alias` 到 `~/.alias`
-- 更新 `~/.bashrc`、`~/.bash_profile`、`~/.zshrc`
-- 为 C Shell / Tcsh 生成 `~/.aliases.csh`
-- 更新 `~/.cshrc`、`~/.tcshrc`
+- Copies `.alias` to `~/.alias`
+- Updates `~/.bashrc`, `~/.bash_profile`, `~/.zshrc`
+- Generates `~/.aliases.csh` for C Shell / Tcsh
+- Updates `~/.cshrc`, `~/.tcshrc`
 
-执行后重新打开终端，或者在当前终端里按正在使用的 Shell 运行：
+Afterwards, reopen your terminal, or run in the current terminal depending on the shell you use:
 
 ```sh
 source "$HOME/.alias"
@@ -31,9 +33,9 @@ source ~/.aliases.csh
 
 ## Bash
 
-Bash 通常读取 `~/.bashrc`。在 macOS 的登录式 Bash 里，也可能读取 `~/.bash_profile`。
+Bash usually reads `~/.bashrc`. On macOS, a login Bash may also read `~/.bash_profile`.
 
-手动配置方式：
+Manual setup:
 
 ```sh
 cp .alias "$HOME/.alias"
@@ -47,7 +49,7 @@ fi
 EOF
 ```
 
-如果你使用 macOS 自带 Bash，并且新终端没有生效，再把同样的配置加入 `~/.bash_profile`：
+If you use the Bash bundled with macOS and the config doesn't take effect in new terminals, also add the same config to `~/.bash_profile`:
 
 ```sh
 cat >> "$HOME/.bash_profile" <<'EOF'
@@ -61,9 +63,9 @@ EOF
 
 ## Zsh
 
-Zsh 通常读取 `~/.zshrc`。macOS Catalina 及之后版本默认 Shell 是 Zsh。
+Zsh usually reads `~/.zshrc`. Zsh is the default shell on macOS Catalina and later.
 
-手动配置方式：
+Manual setup:
 
 ```sh
 cp .alias "$HOME/.alias"
@@ -77,7 +79,7 @@ fi
 EOF
 ```
 
-让当前终端立即生效：
+To apply immediately in the current terminal:
 
 ```sh
 source "$HOME/.zshrc"
@@ -85,7 +87,7 @@ source "$HOME/.zshrc"
 
 ## macOS
 
-macOS 上推荐使用 Zsh 配置：
+On macOS, Zsh is the recommended setup:
 
 ```sh
 cp .alias "$HOME/.alias"
@@ -101,17 +103,17 @@ EOF
 source "$HOME/.zshrc"
 ```
 
-注意：`.alias` 里有少量 Linux 专用命令，例如 `free`、`systemctl`、`journalctl`。这些别名在 macOS 上可以被加载，但只有安装了对应工具或在 Linux 环境中才可正常执行。
+Note: `.alias` contains a few Linux-only commands such as `free`, `systemctl`, and `journalctl`. These aliases can still be loaded on macOS, but they only execute properly if the corresponding tools are installed or you are in a Linux environment.
 
 ## C Shell / Tcsh
 
-当前 `.alias` 使用的是 Bash/Zsh 兼容语法，例如：
+The current `.alias` uses Bash/Zsh-compatible syntax, for example:
 
 ```sh
 alias gs='git status'
 ```
 
-C Shell / Tcsh 的别名语法不同，不能直接 `source ~/.alias`。如果必须使用 C Shell / Tcsh，可以生成一份转换后的配置文件：
+C Shell / Tcsh alias syntax is different, so you cannot `source ~/.alias` directly. If you must use C Shell / Tcsh, you can generate a converted config file:
 
 ```sh
 cp .alias "$HOME/.alias"
@@ -129,17 +131,17 @@ EOF
 done
 ```
 
-然后重新打开终端，或执行：
+Then reopen your terminal, or run:
 
 ```csh
 source ~/.cshrc
-# 或者
+# or
 source ~/.tcshrc
 ```
 
-## 验证是否生效
+## Verify It Works
 
-运行下面任意命令检查别名是否已加载：
+Run any of the following commands to check whether the aliases are loaded:
 
 ```sh
 alias gs
@@ -147,11 +149,11 @@ alias ll
 alias now
 ```
 
-如果能看到对应命令，例如 `gs='git status'`，说明配置已经生效。
+If you see the corresponding command, e.g. `gs='git status'`, the config has taken effect.
 
-## 更新配置
+## Updating
 
-以后如果仓库里的 `.alias` 有更新，重新复制到家目录即可：
+If `.alias` in the repository gets updated later, simply copy it to your home directory again:
 
 ```sh
 cp .alias "$HOME/.alias"
